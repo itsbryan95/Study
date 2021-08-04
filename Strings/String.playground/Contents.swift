@@ -49,3 +49,6 @@ for num in 0..<greeting.count {
     let nextIndex = greeting.index(hIndex, offsetBy: num)
     print(greeting[nextIndex])
 }
+
+
+

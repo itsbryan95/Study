@@ -14,7 +14,8 @@ func testing() {
     print("after if statment")
     
     guard moneyLeft > 5 else {
-        return print("outta money")
+        print("outta money")
+        return
     }
     
     print("after guard statment")
@@ -35,8 +36,8 @@ print("int8 max", Int8.max)
 print("int16 max", Int16.max)
 
 
-let doub: Double = 10.0
-let float: Float = 10.0
+let doub: Double = 10.0 // 64 bits
+let float: Float = 10.0 // 32 bits
 
 let xPostion: CGFloat = 10.0
 
@@ -72,3 +73,5 @@ let reduced = intArr.reduce(1) { total, element in
     return total * element
 }
 print(reduced)
+
+
