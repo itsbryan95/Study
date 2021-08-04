@@ -12,18 +12,39 @@ class Tester {
     
     /// 1. Write a function that takes an array of numbers and returns an array with each of the numbers multiplied by 2
     func multiplyByTwo(numbers original: [Int]) -> [Int]{
+        let mappedArr = original.map { num in
+            return num * 2
+        }
+        
 
-      return []
+      return mappedArr
     }
 
     /// 2. Write a function to return the last half of the array, not including the median
     func lastHalf(array: [Int]) -> [Int] {
-        return []
+        var arr: [Int] = []
+        var index: Int = array.count/2
+        if index % 2 == 0 {
+            index = index + 1
+        }
+        
+        for i in index...array.count - 1 {
+            arr.append(array[i])
+        }
+        
+        return arr
     }
 
     /// 3. Write a function that can creates an array populated with integers going from start (input) to end (input)
     func createArray(from start: Int, to end: Int) -> [Int] {
-      return []
+        
+        var arr: [Int] = []
+        
+        for i in start...end {
+            arr.append(i)
+        }
+        
+        return arr
     }
 
     /**
@@ -33,20 +54,57 @@ class Tester {
         [7,8,9]]
      */
     func create2DArray() -> [[Int]] {
-      return []
+        var count: Int = 1
+        var arr: [Int] = []
+        var finalArray: [[Int]] = []
+        for i in 1...9 {
+            if(arr.count == 3) {
+                finalArray.append(arr)
+    //            count = count + 1
+                arr = []
+            }
+                arr.append(count)
+                count = count + 1
+            if(i == 9) {
+                finalArray.append(arr)
+            }
+            
+        }
+      return finalArray
+        
     }
 
     /// 5. Write a function that returns the number of pairs of elements that sums up to 0
     /// Input [1,2,3,-1,-2,-4] -> Output 2
     func findPairs(nums: [Int]) -> Int {
 
-      return 0
+        var arr: [Int] = nums
+        var pairs: Int = 0
+        for num in nums {
+            var firstNum: Int = num
+            arr.removeFirst()
+            for num2 in arr {
+                if(firstNum + num2 == 0) {
+                    pairs += 1
+                }
+            }
+        }
+
+      return pairs
     }
     
     /// 6. Returns an array of indexes where the char occurs in input word
     func positionsOf(character: Character, in word: String) -> [Int] {
 
-        return []
+        var str: String = word
+        var arr: [Int] = []
+        
+        for (index, ele) in str.enumerated() {
+            if(ele == character) {
+                arr.append(index)
+            }
+        }
+        return arr
     }
     
     /**
@@ -57,7 +115,21 @@ class Tester {
         Ex. [ I, I, O] -> 2
      */
     func minimumChairs(array: [Character]) -> Int {
-        return 0
+        
+        var need : Int = 0
+        var open : Int = 0
+        
+        for char in array {
+            if char == "I" {
+                need += 1
+            } else {
+                open += 1
+                if need > open {
+                    need -= 1
+                }
+            }
+        }
+        return need
     }
     
     /// 8. Pig latin but with words separated by spaces
@@ -72,7 +144,25 @@ class Tester {
      */
     func maxProfit(array: [Int]) -> Int {
         
-        return 0
+        var min : Int = array[0]
+        var max : Int = 0
+        var index : Int = 0
+        
+        for (ind, num) in array.enumerated() {
+            if (num < min ) {
+                min = num
+                index = ind
+                print(index)
+            }
+        }
+            
+        for i in index + 1...array.count - 1 {
+            if(max < array[i]) {
+                max = array[i]
+            }
+        }
+        
+        return max - min
     }
     
     /**
@@ -82,6 +172,19 @@ class Tester {
      */
     func reduceDistanceKeepPriority(array: [Int]) -> [Int] {
         
-        return []
+        var dict: [Int: Int] = [:]
+        var arr: [Int] = []
+        
+        for (index, ele) in array.enumerated() {
+            if(dict[ele] == nil) {
+                dict[ele] = index + 1
+            }
+        }
+        
+        for num in array {
+            arr.append(dict[num].unsafelyUnwrapped)
+        }
+        
+        return arr
     }
 }
