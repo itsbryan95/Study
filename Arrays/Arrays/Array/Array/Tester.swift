@@ -182,7 +182,7 @@ class Tester {
         }
         
         for num in array {
-            arr.append(dict[num].unsafelyUnwrapped)
+            arr.append(dict[num]!)
         }
         
         return arr
