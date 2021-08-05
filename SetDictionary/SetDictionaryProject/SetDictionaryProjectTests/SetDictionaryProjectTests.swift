@@ -83,7 +83,7 @@ class SetDictionaryProjectTests: XCTestCase {
         
         XCTAssertEqual(result, expected, "\n Result: \"\(result)\" \n Expected: \"\(expected)\"")
         
-        let inputTwo = [8, 6, 2, 4]
+        let inputTwo = [8, 6, 2, 4] 
         let expectedTwo = [4, 3, 1, 2]
         
         let resultTwo = tester.reduceDistanceKeepPriority(array: inputTwo)
