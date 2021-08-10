@@ -129,23 +129,7 @@ struct Tester {
      [1, 4, 8, 1] -> [1, 2, 3, 1]
      */
     func reduceDistanceKeepPriority(array: [Int]) -> [Int] {
-//        var emptyDict: [Int: Int] = [:]
-//        var arr: [Int] = []
-//        var count : Int = 1
-//        let sortedArr = arr.sort()
-//
-//        for num in array {
-//            if emptyDict[num] == nil {
-//                emptyDict[num] = count
-//                arr.append(count)
-//                print(arr)
-//            } else {
-//                arr.append(emptyDict[num] ?? 1)
-//                print(arr)
-//            }
-//            count = count + 1
-//        }
-//
+
         return []
     }
     
@@ -177,7 +161,7 @@ struct Tester {
     /// Create a url from a string address, avoid force unwrapping
     func createURL(from address: String?) -> URL {
         
-        let str = address ?? ""
+        let str = address ?? "google.comx"
         let url = URL(string: str)!
         
         return url
@@ -211,7 +195,7 @@ struct Tester {
     /// takes nested optional array, return first value?
     func unwrap(optional: [[Int]?]?) -> Int {
         
-        return optional?[0]?[0] ?? 0
+        return optional?.first??.first ?? 0
     }
     
     /// Unwrap using implicitly unwrap
