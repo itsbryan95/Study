@@ -129,8 +129,37 @@ struct Tester {
      [1, 4, 8, 1] -> [1, 2, 3, 1]
      */
     func reduceDistanceKeepPriority(array: [Int]) -> [Int] {
-
-        return []
+        let sorted: [Int] = array.sorted()
+        let priority: Int = array.min() ?? 0
+        
+        var dict: [Int: Int] = [:]
+        
+        if priority != 1 {
+            for (index, ele) in sorted.enumerated() {
+                if ele == priority {
+                    dict[ele] = 1
+                } else {
+                    dict[ele] = index + 1
+                }
+            }
+        } else {
+            for (index, ele) in array.enumerated() {
+                if ele == priority {
+                    dict[ele] = 1
+                } else {
+                    dict[ele] = index + 1
+                }
+            }
+        }
+        print(array)
+        print(dict)
+        var toReturn: [Int] = []
+        for ele in array {
+            let unwrapped: Int = dict[ele] ?? 0
+            toReturn.append(unwrapped)
+        }
+        print(toReturn)
+        return toReturn
     }
     
     /// Optionals

@@ -21,16 +21,31 @@ class Team {
     }
     
     func startWeek() {
+
         for(index, _) in taskList.enumerated() {
+
+        for index in 0..<taskList.count {
+
             validate(taskNum: index)
         }
     }
+    }
     
     func validate(taskNum: Int) {
+
+//        for employee in employees {
+//            if taskList[taskNum].roleReq == employee.role {
+//                taskList[taskNum].isValid = true
+//                assign(taskNum: taskNum, to: employee)
+
+        let task = taskList[taskNum]
         for employee in employees {
-            if taskList[taskNum].roleReq == employee.role {
+            if employee.role == task.roleReq {
                 taskList[taskNum].isValid = true
                 assign(taskNum: taskNum, to: employee)
+                break
+            } else {
+                taskList[taskNum].isValid = false
             }
         }
     }
@@ -46,6 +61,8 @@ class Team {
             }
         }
         return true
+//        taskList.filter { $0.isComplete }.count == taskList.count
+
     }
     
 //    • returns number of weeks required for the current team to complete all tasks
@@ -55,6 +72,10 @@ class Team {
     func weeksTillComplete() -> Int {
         var hoursTotal: [Role: Int] = [:]
 
+
+
+//        print(taskList)
+
         for task in taskList {
             if let hours = hoursTotal[task.roleReq] {
                 hoursTotal[task.roleReq] = hours + task.timeReq
@@ -63,11 +84,11 @@ class Team {
             }
         }
 
+
         let hoursMax = hoursTotal.values.max() ?? 0
         let weeks = (Double(hoursMax) / 40).rounded(.up)
         return Int(weeks)
-        
-    
+
     }
     //        var hoursReq : Int = 0
     //        var roleReq: Role = taskList[0].roleReq

@@ -42,3 +42,9 @@ print(philly.motto)
 print(phillyTwo.motto)
 
 
+func changeParams(city: inout City) {
+    city.changeMotto(to: "Changed Motto")
+}
+
+changeParams(city: &philly)
+print(philly.motto)

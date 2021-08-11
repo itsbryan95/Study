@@ -50,6 +50,7 @@ print(modifiedNums)
     print(ele)
  }
 
+<<<<<<< HEAD
  mySet.union(myTenSet)
  mySet.intersection(myTenSet)
  mySet.subtract(myTenSet)
@@ -167,3 +168,5 @@ print(modifiedNums)
  
 
 
+=======
+>>>>>>> 11004af06632adb7c9e276d84f7a57a8bb362488

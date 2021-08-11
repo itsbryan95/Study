@@ -67,8 +67,8 @@ class SetDictionaryProjectTests: XCTestCase {
     
     
     func testFindPairs() throws {
-        let input = [1, 2, 3, -1, -2, -4]
-        let expected = 2
+        let input = [1, 1]
+        let expected = 0
         
         let result = tester.findPairs(nums: input)
         

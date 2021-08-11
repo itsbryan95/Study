@@ -14,6 +14,7 @@ struct Task {
     var isValid: Bool = false
     var isComplete: Bool = false
     
+
     init(timeReq: Int, roleReq: Role ) {
         self.timeReq = timeReq
         self.roleReq = roleReq
@@ -29,5 +30,17 @@ struct Task {
     
     mutating func setTimeReq(timeLeft: Int) {
         self.timeReq = timeLeft
+
+    func setIsComplete(status: Bool) {
+        self.isComplete = status
     }
+    
+    func setIsValid(status: Bool) {
+        self.isValid = status
+    }
+    
+    func setTimeReq(timeLeft: Int) {
+        self.timeReq = timeLeft
+    }
+}
 }
