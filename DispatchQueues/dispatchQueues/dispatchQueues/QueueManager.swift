@@ -12,19 +12,25 @@ class QueueManager {
 1. Pass the test cases
 2. Finish the rest of the functions
  - To test: make sure you have the same prints as the screenshots
+     
 */
+    let group = DispatchGroup()
 
 /// See test cases: print 0 to end serially
     func printSerial(to end: Int) {
         for num in 0...end {
-            /// Your code here
+            DispatchQueue.global().sync{
+                print(num)
+            }
         }
     }
     
 /// See test cases
     func printConcurrent(to end: Int) {
         for num in 0...end {
-            /// Your code here
+            DispatchQueue.global().async{
+                print(num)
+            }
         }
     }
     
@@ -32,6 +38,15 @@ class QueueManager {
     func serialClosures(task: @escaping (Int) -> Void, numTimes: Int) {
         for num in 0...numTimes {
         /// Your code here
+            group.enter()
+            DispatchQueue.global().async{
+                print("Serial Start. Run \(num):")
+            }
+            group.leave()
+            group.enter()
+            task(num)
+            group.leave()
+            
         }
     }
     
@@ -39,17 +54,33 @@ class QueueManager {
     func concurrentClosures(task: @escaping (Int) -> Void, numTimes: Int) {
         for num in 0...numTimes {
         /// Your code here
+            DispatchQueue.global().async{
+                print("Serial Start. Run \(num):")
+            }
+            task(num)
         }
     }
 
 /// See screenshots: Problem 3 and 4
     func execute(closure: @escaping (DispatchGroup?) -> Void, queueType: QueueType) {
-        
+        if queueType == QueueType.serial {
+            group.enter()
+            closure(group)
+
+        } else {
+            DispatchQueue.global().async {
+                self.group.enter()
+                closure(self.group)
+   
+            }
+        }
     }
     
 ///  See screenshots: Problem 3 and 4, print GROUP end only after both tasks are done
     func addGroupCompletion() {
-        
+            group.notify(queue: DispatchQueue.main) {
+                print("GROUP END")
+            }
     }
     
 }
