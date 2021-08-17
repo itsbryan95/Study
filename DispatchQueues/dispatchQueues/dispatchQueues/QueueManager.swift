@@ -14,6 +14,9 @@ class QueueManager {
  - To test: make sure you have the same prints as the screenshots
      
 */
+    var serialQueue: DispatchQueue? =
+        DispatchQueue(label: "serialLabel",
+                      attributes: .concurrent)
     let group = DispatchGroup()
 
 /// See test cases: print 0 to end serially
