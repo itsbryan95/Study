@@ -17,20 +17,36 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OW6-Lr-aEH">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="724"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BXL-Ye-cgQ">
+                                <rect key="frame" x="10" y="822" width="394" height="30"/>
+                                <state key="normal" title="Go To Fav"/>
+                                <connections>
+                                    <action selector="goToFavList:" destination="BYZ-38-t0r" eventType="touchUpInside" id="s9G-cb-Ove"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="BXL-Ye-cgQ" firstAttribute="top" secondItem="OW6-Lr-aEH" secondAttribute="bottom" constant="10" id="1DW-xG-r8Q"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="BXL-Ye-cgQ" secondAttribute="bottom" constant="10" id="IEO-kP-q5I"/>
                             <constraint firstItem="OW6-Lr-aEH" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="KQu-iv-IoH"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="OW6-Lr-aEH" secondAttribute="bottom" id="Qu9-uc-LRD"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="BXL-Ye-cgQ" secondAttribute="trailing" constant="10" id="V0n-TP-pxu"/>
                             <constraint firstItem="OW6-Lr-aEH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="cCE-ua-bMz"/>
+                            <constraint firstItem="BXL-Ye-cgQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="dST-LM-eHr"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="OW6-Lr-aEH" secondAttribute="trailing" id="mKo-TH-TQj"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="1HK-kQ-RCP"/>
+                    <navigationItem key="navigationItem" id="1HK-kQ-RCP">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="gobackward" catalog="system" id="sqm-Ev-Rcf">
+                            <connections>
+                                <action selector="refresh:" destination="BYZ-38-t0r" id="j0c-72-NIg"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="OW6-Lr-aEH" id="Bzx-Js-jCu"/>
                     </connections>
@@ -90,6 +106,36 @@
             </objects>
             <point key="canvasLocation" x="1692.753623188406" y="91.741071428571431"/>
         </scene>
+        <!--Drink Favorites View Controller-->
+        <scene sceneID="aEy-49-tjp">
+            <objects>
+                <viewController storyboardIdentifier="FavsVC" id="7kL-jm-nh4" customClass="DrinkFavoritesViewController" customModule="drinksCache" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TfI-Iw-mMP">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rks-Bh-eit">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="1Ts-KG-xrk"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="rks-Bh-eit" firstAttribute="top" secondItem="1Ts-KG-xrk" secondAttribute="top" id="4f6-wR-5zt"/>
+                            <constraint firstItem="1Ts-KG-xrk" firstAttribute="trailing" secondItem="rks-Bh-eit" secondAttribute="trailing" id="Fdq-c3-NDt"/>
+                            <constraint firstItem="rks-Bh-eit" firstAttribute="leading" secondItem="1Ts-KG-xrk" secondAttribute="leading" id="Kjg-aH-zet"/>
+                            <constraint firstItem="1Ts-KG-xrk" firstAttribute="bottom" secondItem="rks-Bh-eit" secondAttribute="bottom" id="bBG-OC-nSG"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="rks-Bh-eit" id="TIN-tb-DpQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dG4-PC-Avc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1520" y="842"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="W9I-Sd-Zdc">
             <objects>
@@ -110,6 +156,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="gobackward" catalog="system" width="121" height="128"/>
         <image name="heart" catalog="system" width="128" height="109"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

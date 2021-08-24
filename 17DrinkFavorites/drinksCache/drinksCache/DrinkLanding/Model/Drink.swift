@@ -22,4 +22,5 @@ struct DrinkItem: Codable {
     let name: String
     let imageStr: String
     let idDrink: String
+    var isFav = false
 }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9E5E6CBB26D539F00006F840 /* DrinkDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5E6CBA26D539F00006F840 /* DrinkDetailsViewController.swift */; };
+		9E5E6CBE26D578330006F840 /* DrinkFavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5E6CBD26D578330006F840 /* DrinkFavoritesViewController.swift */; };
 		9EC836B426D3C46B00E70BE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC836B326D3C46B00E70BE7 /* AppDelegate.swift */; };
 		9EC836B626D3C46B00E70BE7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC836B526D3C46B00E70BE7 /* SceneDelegate.swift */; };
 		9EC836B826D3C46B00E70BE7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC836B726D3C46B00E70BE7 /* ViewController.swift */; };
@@ -22,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		9E5E6CBA26D539F00006F840 /* DrinkDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkDetailsViewController.swift; sourceTree = "<group>"; };
+		9E5E6CBD26D578330006F840 /* DrinkFavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkFavoritesViewController.swift; sourceTree = "<group>"; };
 		9EC836B026D3C46B00E70BE7 /* drinksCache.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = drinksCache.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EC836B326D3C46B00E70BE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9EC836B526D3C46B00E70BE7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,6 +67,14 @@
 			path = DrinkLanding;
 			sourceTree = "<group>";
 		};
+		9E5E6CBC26D578230006F840 /* DrinkFavList */ = {
+			isa = PBXGroup;
+			children = (
+				9E5E6CBD26D578330006F840 /* DrinkFavoritesViewController.swift */,
+			);
+			path = DrinkFavList;
+			sourceTree = "<group>";
+		};
 		9EC836A726D3C46B00E70BE7 = {
 			isa = PBXGroup;
 			children = (
@@ -84,6 +94,7 @@
 		9EC836B226D3C46B00E70BE7 /* drinksCache */ = {
 			isa = PBXGroup;
 			children = (
+				9E5E6CBC26D578230006F840 /* DrinkFavList */,
 				9EC836B926D3C46C00E70BE7 /* Main.storyboard */,
 				9E5E6CB926D539BA0006F840 /* DrinkLanding */,
 				9E5E6CB826D539AE0006F840 /* DrinkDetails */,
@@ -204,6 +215,7 @@
 				9E5E6CBB26D539F00006F840 /* DrinkDetailsViewController.swift in Sources */,
 				9EC836D726D3ED8700E70BE7 /* ImageCache.swift in Sources */,
 				9EC836B826D3C46B00E70BE7 /* ViewController.swift in Sources */,
+				9E5E6CBE26D578330006F840 /* DrinkFavoritesViewController.swift in Sources */,
 				9EC836B426D3C46B00E70BE7 /* AppDelegate.swift in Sources */,
 				9EC836C926D3C49000E70BE7 /* Drink.swift in Sources */,
 				9EC836D026D3C83900E70BE7 /* DrinkCell.swift in Sources */,

@@ -13,6 +13,16 @@ class ViewController: UIViewController {
     
     let drinkAddress = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Gin"
     
+    @IBAction func goToFavList(_ sender: Any) {
+        guard let favVC = storyboard?.instantiateViewController(identifier: "FavsVC") as? DrinkFavoritesViewController else { return }
+        favVC.drinks = drinks.filter { $0.isFav == true }
+        navigationController?.pushViewController(favVC, animated: true)
+    }
+    
+    @IBAction func refresh(_ sender: Any) {
+        fetchData()
+    }
+    
     var drinks: [DrinkItem] = []
     
     override func viewDidLoad() {
@@ -26,6 +36,7 @@ class ViewController: UIViewController {
     func fetchData() {
         downloadData { model in
             self.drinks = model.drinks
+            print(self.drinks)
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
@@ -109,9 +120,17 @@ extension ViewController: UITableViewDelegate {
         print("indexpath: \(indexPath)")
         guard let detailsVC = storyboard?.instantiateViewController(identifier: "DetailsVC") as? DrinkDetailsViewController else { return }
         
-        detailsVC.drinkItem = drinks[indexPath.row]
+        detailsVC.favDelegate = self
         
+        detailsVC.drinkItem = drinks[indexPath.row]
+        detailsVC.row = indexPath.row
         navigationController?.pushViewController(detailsVC, animated: true)
         
+    }
+}
+
+extension ViewController: FavoriteDelegate {
+    func changeIsFav(favStatus: Bool, row: Int) {
+        drinks[row].isFav = favStatus
     }
 }

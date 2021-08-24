@@ -14,7 +14,15 @@ class DrinkDetailsViewController: UIViewController {
     @IBOutlet weak var drinkNameLabel: UILabel!
     var drinkItem: DrinkItem?
     
-    var isFav = false
+    var row = 0
+    var isFav: Bool {
+        get {
+            drinkItem?.isFav ?? false
+        }
+        set {
+            drinkItem?.isFav = newValue
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +31,10 @@ class DrinkDetailsViewController: UIViewController {
         drinkImageView.image = ImageCache.shared.read(imageStr: drinkItem?.imageStr ?? "")
         print("drink details \(drinkItem)")
         addTapToHeartView()
+        
+        
+        let imageStr = isFav ? "heart.fill" : "heart"
+        heartImageView.image = UIImage(systemName: imageStr)
         
     }
     
@@ -38,7 +50,14 @@ class DrinkDetailsViewController: UIViewController {
         
         let imageStr = isFav ? "heart.fill" : "heart"
         heartImageView.image = UIImage(systemName: imageStr)
-        
+
+        favDelegate?.changeIsFav(favStatus: isFav, row: row)
     }
     
+    var favDelegate: FavoriteDelegate?
+    
+}
+
+protocol FavoriteDelegate {
+    func changeIsFav(favStatus: Bool, row: Int)
 }
