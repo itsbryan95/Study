@@ -1,0 +1,57 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2576
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fswiss\fcharset0 Helvetica-Bold;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww18240\viewh11980\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs36 \cf0 What is Design Pattern\
+1) Solves a problem\
+- Ex. Delegation: Two instances having direct reference to each other -> loosely coupled communication\
+2) Architecture Design Pattern: separation of types/responsibility\
+- responsibilities: Displaying data, fetching data, saving data, responding to user input, etc\
+\
+MVC: Model, View, Controller\
+\
+
+\f1\b Model
+\f0\b0 : Data\
+- Holds the data (Database )\
+- Data manipulation (Business Logic)\
+- Data Parsing\
+- Completely UI/ independent \
+\
+
+\f1\b View
+\f0\b0 : Visual rendering, communicates with Controller, register user\'92s interaction\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 - Users Input\
+	- TapGesture, Buttons, Swipes\
+- Showing Data\
+	- Does not hold any data\
+	- Shows the formatted data given by the controller\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 - Communication \
+	- From Controller to View: Controller owns the view as a property, direct reference\
+	- From View to Controller: IBActions and delegation pattern. Does not own a controller\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 - Completely Data independent\
+ \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\b \cf0 Controller
+\f0\b0 : How to display that data\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 - Fetching Data: Networking\
+- Handling User events\
+- Navigation (Routing)\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 - Communication\
+	- From Controller to View: talks directly to the view (owns the view)\
+	- From Controller to Model: owns the model\
+	- From View to Controller: IBActions and delegation pattern\
+	- From Model to Controller: \
+		- Observer Pattern (property observer)\
+		- Publisher/Subscriber pattern, (Notification)\
+		- Closures\
+		- Delegation}
