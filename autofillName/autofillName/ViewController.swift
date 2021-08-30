@@ -26,7 +26,8 @@ class ViewController: UIViewController {
 
 extension ViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        setName(name: textField.text ?? "")
+//        setName(name: textField.text ?? "")
+        setNameFileManager(name: textField.text ?? "")
         textField.resignFirstResponder()
         return true
     }
@@ -43,8 +44,56 @@ extension ViewController {
         return UserDefaults.standard.value(forKey: key)
     }
     
+    enum DiskStorageError: Error {
+        case missingFile
+        case noData
+    }
+    
+    func setNameFileManager(name: String) {
+        let cacheDirectory = FileManager.SearchPathDirectory.cachesDirectory
+        let folderURLs = FileManager.default.urls(for: cacheDirectory, in: .userDomainMask)
+        
+        guard let fileURL = folderURLs.first?.appendingPathComponent("name.cache") else {
+            fatalError()
+        }
+        
+        guard let data = try? JSONEncoder().encode(name) else {
+            fatalError()
+        }
+        
+        do {
+            try data.write(to: fileURL)
+        } catch {
+            fatalError()
+        }
+        
+    }
+    
+    func getNameFileManager(key: String) throws -> String {
+        let cacheDirectory = FileManager.SearchPathDirectory.cachesDirectory
+        let folderURLs = FileManager.default.urls(for: cacheDirectory, in: .userDomainMask)
+        
+        guard let fileURL = folderURLs.first?.appendingPathComponent(key + ".cache") else {
+            fatalError()
+        }
+        print(fileURL)
+        
+        guard let data = FileManager.default.contents(atPath: fileURL.path) else {
+//            fatalError()
+            throw DiskStorageError.noData
+        }
+        
+        do {
+            let object = try JSONDecoder().decode(String.self, from: data)
+            return object
+        } catch {
+            fatalError()
+        }
+    }
+    
     func fetchName(key: String) -> Any? {
-        guard let name = try? getName(key: key) else {
+//        guard let name = try? getName(key: key) else {
+        guard let name = try? getNameFileManager(key: key) else {
             return nil
         }
         return name
